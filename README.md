@@ -1,7 +1,7 @@
 # pdf-downloader
 
-[crates.io](https://crates.io/crates/pdf-downloader)
-[docs.rs](https://docs.pdf-downloader)
+[crates.io](https://crates.io/crates/pdf-downloader) |
+[docs.rs](https://docs.pdf-downloader) |
 [github.com](https://github.com/bcmyers/pdf-downloader)
 
 `pdf-downloader` is a rust crate that helps you to download a series of
