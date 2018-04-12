@@ -23,3 +23,6 @@ log = "0.4"
 num_cpus = "1.8"
 reqwest = "0.8"
 url = "1.7"
+
+[badges]
+travis-ci = { repository = "bcmyers/urls2disk", branch = "master" }
