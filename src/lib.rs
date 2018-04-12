@@ -141,7 +141,7 @@
 #![deny(missing_debug_implementations)]
 #![deny(missing_docs)]
 #![deny(warnings)]
-#![doc(html_root_url = "https://docs.rs/urls2disk/0.1.0")]
+#![doc(html_root_url = "https://docs.rs/urls2disk/0.1.1")]
 
 #[macro_use]
 extern crate cfg_if;
