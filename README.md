@@ -1,21 +1,21 @@
 # pdf-downloader
 
-[crates.io](https://crates.io/crates/pdf-downloader) |
-[docs.rs](https://docs.rs/pdf-downloader) |
-[github.com](https://github.com/bcmyers/pdf-downloader)
+[crates.io](https://crates.io/crates/urls2disk) |
+[docs.rs](https://docs.rs/urls2disk) |
+[github.com](https://github.com/bcmyers/urls2disk)
 
-`pdf-downloader` is a rust crate that helps you to download a series of
+`urls2disk` is a rust crate that helps you to download a series of
 webpages in parallel and save them to disk. Depending on your
 choice, it will either write the raw bytes of the webpages to disk or it will
 first convert them to PDF before writing them to disk. It's helpful for general
 webscraping as well as for converting a bunch of webpages to PDF.
 
-A key feature of `pdf-downloader` is that you can set a maximum
+A key feature of `urls2disk` is that you can set a maximum
 number of requests per second while downloading webpages; so you can effectively throttle
 yourself so as not to run afoul of any servers that will block you if you
 hit them with too many requests at once.
 
-Under the hood, `pdf-downloader` uses [wkhtmltopdf](https://wkhtmltopdf.org/) to
+Under the hood, `urls2disk` uses [wkhtmltopdf](https://wkhtmltopdf.org/) to
 convert webpages to PDF if you choose that option; so to use it you'll need
 wkhtmltopdf installed on your machine. Installing wkhtmltopdf on macOS with
 [Homebrew](https://brew.sh/) is super simple. Just `brew install Caskroom/cask/wkhtmltopdf`
@@ -31,17 +31,17 @@ you should be able to customize everything (paper size, margins, image resolutio
 but right now that's not included 😞.
 
 Here's an example of downloading Apple, Inc.'s annual reports from 2010-2017
-from the SEC website using `pdf-downloader`:
+from the SEC website using `urls2disk`:
 
 ```rust
 extern crate num_cpus;
-extern crate pdf_downloader;
 extern crate reqwest;
+extern crate urls2disk;
 
 use std::fs;
 use std::path::Path;
 
-use pdf_downloader::{Client, Result, SimpleDocument, Url};
+use urls2disk::{Client, Result, SimpleDocument, Url};
 
 fn run() -> Result<()> {
     // Create an output directory

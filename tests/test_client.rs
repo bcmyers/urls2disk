@@ -1,11 +1,11 @@
-extern crate pdf_downloader;
 extern crate url;
+extern crate urls2disk;
 
 use std::fs;
 use std::path::Path;
 use std::time::Instant;
 
-use pdf_downloader::{Client, Result, SimpleDocument, Url};
+use urls2disk::{Client, Result, SimpleDocument, Url};
 
 const NO_OF_URLS: usize = 100;
 

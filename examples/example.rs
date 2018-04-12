@@ -1,11 +1,11 @@
 extern crate num_cpus;
-extern crate pdf_downloader;
 extern crate reqwest;
+extern crate urls2disk;
 
 use std::fs;
 use std::path::Path;
 
-use pdf_downloader::{Client, Result, SimpleDocument, Url};
+use urls2disk::{Client, Result, SimpleDocument, Url};
 
 fn run() -> Result<()> {
     // Create an output directory

@@ -1,17 +1,17 @@
 [package]
-name = "pdf-downloader"
+name = "urls2disk"
 version = "0.1.0"
 authors = ["Brian Myers <brian.carl.myers@gmail.com>"]
 
 categories = ["web-programming::http-client"]
-description = "Http client to download urls, optionally converting them to PDF, in parallel"
-documentation = "https://docs.rs/pdf-downloader"
-homepage = "https://github.com/bcmyers/pdf-downloader"
-keywords = ["http", "scrape", "scraping", "pdf"]
+description = "Http client to download urls to disk concurrently, optionally converting them to PDF"
+documentation = "https://docs.rs/urls2disk"
+homepage = "https://github.com/bcmyers/urls2disk"
+keywords = ["http", "scraping", "pdf"]
 license = "MIT"
 publish = true
 readme = "README.md"
-repository = "https://github.com/bcmyers/pdf-downloader"
+repository = "https://github.com/bcmyers/urls2disk"
 
 [dependencies]
 cfg-if = "0.1"
