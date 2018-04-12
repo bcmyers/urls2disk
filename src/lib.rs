@@ -1,3 +1,5 @@
+//! # urls2disk
+//!
 //! [crates.io](https://crates.io/crates/urls2disk) |
 //! [docs.rs](https://docs.rs/urls2disk) |
 //! [github.com](https://github.com/bcmyers/urls2disk)
@@ -133,10 +135,13 @@
 //!     run().unwrap();
 //! }
 //! ```
-#![deny(missing_debug_implementations)]
 #![cfg_attr(feature = "clippy", feature(plugin))]
 #![cfg_attr(feature = "clippy", plugin(clippy))]
 #![cfg_attr(not(feature = "clippy"), allow(unknown_lints))]
+#![deny(missing_debug_implementations)]
+#![deny(missing_docs)]
+#![deny(warnings)]
+#![doc(html_root_url = "https://docs.rs/urls2disk/0.1.0")]
 
 #[macro_use]
 extern crate cfg_if;

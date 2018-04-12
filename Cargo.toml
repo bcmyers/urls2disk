@@ -1,6 +1,6 @@
 [package]
 name = "urls2disk"
-version = "0.1.0"
+version = "0.1.0" # don't forget to update html_root_url
 authors = ["Brian Myers <brian.carl.myers@gmail.com>"]
 
 categories = ["web-programming::http-client"]
