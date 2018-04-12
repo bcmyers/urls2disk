@@ -125,7 +125,6 @@ fn run() -> Result<()> {
     // Note: Here, if you want to, you can now access the raw bytes of all the urls
     // you downloaded, since they are now stored on each SimpleDocument in addition
     // to being saved on your disk
-
     Ok(())
 }
 
