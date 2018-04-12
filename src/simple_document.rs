@@ -29,10 +29,7 @@ impl SimpleDocument {
     /// If `SimpleDocument` has already been downloaded by `Client`, will
     /// return `Some(bytes)`; otherwise will return `None`
     pub fn bytes(&self) -> Option<&[u8]> {
-        match self.bytes {
-            Some(ref v) => Some(v),
-            None => None,
-        }
+        self.bytes.as_ref().map(|v| &v[..])
     }
 }
 

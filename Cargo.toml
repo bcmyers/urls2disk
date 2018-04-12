@@ -15,7 +15,7 @@ repository = "https://github.com/bcmyers/urls2disk"
 
 [dependencies]
 cfg-if = "0.1"
-clippy = { git = "https://github.com/rust-lang-nursery/rust-clippy.git", optional = true }
+clippy = { version = "*", optional = true }
 crossbeam = "0.3"
 failure = "0.1"
 lazy_static = "1.0"

@@ -102,16 +102,14 @@ impl Client {
                 let url = document.url().clone();
                 let wkhtmltopdf = document.wkhtmltopdf();
                 if path.exists() {
-                    let result = File::open(path)
-                        .map_err(|e| Error::from(e))
-                        .and_then(|file| {
-                            let mut reader = BufReader::new(file);
-                            let mut bytes = Vec::new();
-                            reader.read_to_end(&mut bytes)?;
-                            trace!("processed {:?}", &url);
-                            (*document).set_bytes(Some(bytes));
-                            Ok::<_, Error>(())
-                        });
+                    let result = File::open(path).map_err(Error::from).and_then(|file| {
+                        let mut reader = BufReader::new(file);
+                        let mut bytes = Vec::new();
+                        reader.read_to_end(&mut bytes)?;
+                        trace!("processed {:?}", &url);
+                        (*document).set_bytes(Some(bytes));
+                        Ok::<_, Error>(())
+                    });
                     s2.send(result).unwrap();
                     continue;
                 }
