@@ -1,4 +1,4 @@
-# pdf-downloader
+# urls2disk
 
 [crates.io](https://crates.io/crates/urls2disk) |
 [docs.rs](https://docs.rs/urls2disk) |
