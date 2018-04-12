@@ -29,7 +29,7 @@ fn run() -> Result<()> {
         .map(|stem| format!("{}{}", &base, stem))
         .collect::<Vec<String>>();
 
-    // Turn the vector or urls into a vector of Box<SimpleDocument> that we can
+    // Turn the vector of urls into a vector of Box<SimpleDocument> that we can
     // feed to Client. This version sets the wkhtmltopdf option to false; so when
     // we feed this list to Client it will just download the raw webpages in
     // html format instead of first converting them to PDF
@@ -45,7 +45,7 @@ fn run() -> Result<()> {
         })
         .collect::<Result<Vec<Box<SimpleDocument>>>>()?;
 
-    // Turn the vector or urls into a vector of Box<SimpleDocument> that we can
+    // Turn the vector of urls into a vector of Box<SimpleDocument> that we can
     // feed to Client. This version sets the wkhtmltopdf option to true; so when we
     // feed this list to Client it will use wkhtmltopdf to convert the webpages
     // into PDF before writing them to disk

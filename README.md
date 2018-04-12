@@ -1,5 +1,9 @@
 # pdf-downloader
 
+[crates.io](https://crates.io/crates/pdf-downloader)
+[docs.rs](https://docs.pdf-downloader)
+[github.com](https://github.com/bcmyers/pdf-downloader)
+
 `pdf-downloader` is a rust crate that helps you to download a series of
 webpages in parallel and save them to disk. Depending on your
 choice, it will either write the webpages to disk (their raw bytes) or it will
@@ -61,7 +65,7 @@ fn run() -> Result<()> {
         .map(|stem| format!("{}{}", &base, stem))
         .collect::<Vec<String>>();
 
-    // Turn the vector or urls into a vector of Box<SimpleDocument> that we can
+    // Turn the vector of urls into a vector of Box<SimpleDocument> that we can
     // feed to Client. This version sets the wkhtmltopdf option to false; so when
     // we feed this list to Client it will just download the raw webpages in
     // html format instead of first converting them to PDF
@@ -76,7 +80,7 @@ fn run() -> Result<()> {
              Ok(Box::new(document))
         }).collect::<Result<Vec<Box<SimpleDocument>>>>()?;
 
-    // Turn the vector or urls into a vector of Box<SimpleDocument> that we can
+    // Turn the vector of urls into a vector of Box<SimpleDocument> that we can
     // feed to Client. This version sets the wkhtmltopdf option to true; so when we
     // feed this list to Client it will use wkhtmltopdf to convert the webpages
     // into PDF before writing them to disk

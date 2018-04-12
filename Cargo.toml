@@ -3,6 +3,16 @@ name = "pdf-downloader"
 version = "0.1.0"
 authors = ["Brian Myers <brian.carl.myers@gmail.com>"]
 
+categories = ["web-programming::http-client"]
+description = "Http client to download urls, optionally converting them to PDF, in parallel"
+documentation = "https://docs.pdf-downloader"
+homepage = "https://github.com/bcmyers/pdf-downloader"
+keywords = ["http", "scrape", "scraping", "pdf"]
+license = "MIT"
+publish = true
+readme = "README.md"
+repository = "https://github.com/bcmyers/pdf-downloader"
+
 [dependencies]
 cfg-if = "0.1"
 clippy = { git = "https://github.com/rust-lang-nursery/rust-clippy.git", optional = true }
