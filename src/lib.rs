@@ -1,9 +1,12 @@
+//! [crates.io](https://crates.io/crates/pdf-downloader) |
+//! [docs.rs](https://docs.rs/pdf-downloader) |
+//! [github.com](https://github.com/bcmyers/pdf-downloader)
+//!
 //! `pdf-downloader` is a rust crate that helps you to download a series of
 //! webpages in parallel and save them to disk. Depending on your
-//! choice, it will either write the webpages to disk (their raw bytes) or it will
-//! first convert them to PDF before writing them to disk. So really it's helpful for general
-//! webscraping as well as for converting a bunch of webpages to PDF (any thoughts on a better
-//! name are certainly welcome :)).
+//! choice, it will either write the raw bytes of the webpages to disk or it will
+//! first convert them to PDF before writing them to disk. It's helpful for general
+//! webscraping as well as for converting a bunch of webpages to PDF.
 //!
 //! A key feature of `pdf-downloader` is that you can set a maximum
 //! number of requests per second while downloading webpages; so you can effectively throttle
@@ -23,7 +26,7 @@
 //! I would like to add the ability to pass more options to wkhtmltopdf.  Right now,
 //! the only wkhtmltopdf setting you can change is the `zoom` setting.  In the future,
 //! you should be able to customize everything (paper size, margins, image resolution, etc.),
-//! but right now that's not included :(.
+//! but right now that's not included 😞.
 //!
 //! Here's an example of downloading Apple, Inc.'s annual reports from 2010-2017
 //! from the SEC website using `pdf-downloader`:

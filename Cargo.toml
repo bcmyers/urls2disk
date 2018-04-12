@@ -5,7 +5,7 @@ authors = ["Brian Myers <brian.carl.myers@gmail.com>"]
 
 categories = ["web-programming::http-client"]
 description = "Http client to download urls, optionally converting them to PDF, in parallel"
-documentation = "https://docs.pdf-downloader"
+documentation = "https://docs.rs/pdf-downloader"
 homepage = "https://github.com/bcmyers/pdf-downloader"
 keywords = ["http", "scrape", "scraping", "pdf"]
 license = "MIT"

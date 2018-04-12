@@ -27,9 +27,9 @@ cfg_if! {
 /// implementing `Document`. It does this in parallel to maximize efficiency,
 /// but will never exceed the maximum number of requests per second provided by
 /// the user nor the maximum number of threads provided.  Additionally, if the
-/// object implemeting `Document` sets `wkhtmltopdf` to `true` (see the
-/// `Document` trait below), the `Client` will use `wkhtmltopdf` to convert the
-/// what it downloads to PDF before writing it to disk.
+/// object implemeting `Document` returns `true` from its `wkhtmltopdf()` method,
+/// the `Client` will use `wkhtmltopdf` to convert what it downloads to PDF before
+/// writing it to disk.
 #[derive(Clone, Debug)]
 pub struct Client {
     inner: reqwest::Client,
@@ -60,9 +60,8 @@ impl Client {
     /// * `max_requests_per_second` = `10`
     /// * `max_threads_cpu` = number of logical cores on your machine
     /// * `max_threads_io` = `100`
-    /// * `reqwest_client` = default `reqwest::Client` plus `gzip` set to
-    /// `false` and `timeout` set to `None` * `wkhtmltopdf_zoom` = `"3.5"`
-    /// on macOS and `"1.0"` on any other system
+    /// * `reqwest_client` = default `reqwest::Client` plus `gzip` set to `false` and `timeout` set to `None`
+    /// * `wkhtmltopdf_zoom` = `"3.5"` on macOS and `"1.0"` on any other system
     pub fn default() -> Result<Client> {
         let inner = reqwest::ClientBuilder::new()
             .gzip(false)

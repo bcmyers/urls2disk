@@ -1,13 +1,13 @@
 # pdf-downloader
 
 [crates.io](https://crates.io/crates/pdf-downloader) |
-[docs.rs](https://docs.pdf-downloader) |
+[docs.rs](https://docs.rs/pdf-downloader) |
 [github.com](https://github.com/bcmyers/pdf-downloader)
 
 `pdf-downloader` is a rust crate that helps you to download a series of
 webpages in parallel and save them to disk. Depending on your
-choice, it will either write the webpages to disk (their raw bytes) or it will
-first convert them to PDF before writing them to disk. So really it's helpful for general
+choice, it will either write the raw bytes of the webpages to disk or it will
+first convert them to PDF before writing them to disk. It's helpful for general
 webscraping as well as for converting a bunch of webpages to PDF.
 
 A key feature of `pdf-downloader` is that you can set a maximum

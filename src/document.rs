@@ -3,10 +3,9 @@ use std::path::Path;
 use url::Url;
 
 /// `Document` is a trait for representing objects that can be downloaded and
-/// written to disk using the `Client` struct.  An object implementing
-/// `Document` can optionally be designated a `wkhtmltopdf` object by making
-/// sure the `wkhtmltopdf()` method return `true`, which means it will be
-/// converted to pdf using `wkhtmltopdf` before being written to disk.
+/// written to disk using the `Client` struct.  If an object implementing
+/// `Document` returns `true` from its `wkhtmltopdf()` method, it will
+/// be converted to PDF before it is written to disk.
 pub trait Document {
     /// Returns a `&Path` representing the location on disk to write the
     /// document to
