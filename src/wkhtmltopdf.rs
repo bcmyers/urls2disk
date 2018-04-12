@@ -291,3 +291,45 @@ impl From<PageSize> for String {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_to_arguments() {
+        let settings = Settings {
+            disable_external_links: true,
+            disable_javascript: true,
+            enable_forms: true,
+            dpi: 100,
+            grayscale: true,
+            image_dpi: 101,
+            image_quality: 102,
+            low_quality: true,
+            javascript_delay: Duration::from_millis(2000),
+            margin_bottom: "0.1in".to_string(),
+            margin_left: "0.2in".to_string(),
+            margin_right: "0.3in".to_string(),
+            margin_top: "0.4in".to_string(),
+            no_background: true,
+            no_images: true,
+            no_pdf_compression: true,
+            orientation: Orientation::Landscape,
+            page_size: PageSize::A4,
+            zoom: 2.0,
+        };
+        let arguments = settings.to_arguments();
+        let mut s = String::new();
+        for argument in arguments {
+            s = format!("{} {}", s, argument);
+        }
+        let output = s.trim();
+        let desired = "--disable-external-links --disable-javascript --enable-forms \
+            --dpi 100 --grayscale --image-dpi 101 --image-quality 102 --low-quality \
+            --javascript-delay 2000 --margin-bottom 0.1in --margin-left 0.2in \
+            --margin-right 0.3in --margin-top 0.4in --no-background --no-images \
+            --no-pdf-compression --orientation Landscape --page-size A4 --zoom 2.00";
+        assert_eq!(desired, output);
+    }
+}
