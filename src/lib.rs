@@ -137,7 +137,7 @@
 #![cfg_attr(not(feature = "clippy"), allow(unknown_lints))]
 #![deny(missing_debug_implementations)]
 #![deny(missing_docs)]
-#![doc(html_root_url = "https://docs.rs/urls2disk/0.1.1")]
+#![doc(html_root_url = "https://docs.rs/urls2disk/0.1.2")]
 
 #[macro_use]
 extern crate cfg_if;
