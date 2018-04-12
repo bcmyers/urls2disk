@@ -84,7 +84,8 @@ fn run() -> Result<()> {
 
     // Set the client off and running. It will download and write to disk all the
     // documents while simultaneously respecting the 'requests per second' and
-    // other limits we provided
+    // other limits we provided. If you already have the documents on disk,
+    // the client will not redownload them
     client.get_documents(&mut documents)?;
 
     // Note: Here, if you want to, you can now access the raw bytes of all the urls
