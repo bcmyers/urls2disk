@@ -1,0 +1,6 @@
+.DS_Store
+.vscode/
+**/data/
+**/target/
+**/test_output/
+**/*.rs.bk

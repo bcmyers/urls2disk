@@ -1,0 +1,15 @@
+[package]
+name = "pdf-downloader"
+version = "0.1.0"
+authors = ["Brian Myers <brian.carl.myers@gmail.com>"]
+
+[dependencies]
+cfg-if = "0.1"
+clippy = { git = "https://github.com/rust-lang-nursery/rust-clippy.git", optional = true }
+crossbeam = "0.3"
+failure = "0.1"
+lazy_static = "1.0"
+log = "0.4"
+num_cpus = "1.8"
+reqwest = "0.8"
+url = "1.7"
