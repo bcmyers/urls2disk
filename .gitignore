@@ -4,3 +4,4 @@
 **/target/
 **/test_output/
 **/*.rs.bk
+Cargo.lock
