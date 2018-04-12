@@ -14,14 +14,7 @@ use url::Url;
 use document::Document;
 use error::{Error, Result};
 use semaphore::Semaphore;
-
-cfg_if! {
-    if #[cfg(target_os = "macos")] {
-        fn default_wkhtmltopdf_zoom() -> String {"3.5".to_string()}
-    } else {
-        fn default_wkhtmltopdf_zoom() -> String {"1.0".to_string()}
-    }
-}
+use wkhtmltopdf;
 
 /// A `Client` downloads and writes to disk a slice of boxed objects
 /// implementing `Document`. It does this in parallel to maximize efficiency,
@@ -32,48 +25,12 @@ cfg_if! {
 /// writing it to disk.
 #[derive(Clone, Debug)]
 pub struct Client {
-    inner: reqwest::Client,
-    semaphore: Arc<Semaphore>,
-    wkhtmltopdf_zoom: String,
+    pub(crate) inner: reqwest::Client,
+    pub(crate) semaphore: Arc<Semaphore>,
+    pub(crate) wkhtmltopdf_settings: wkhtmltopdf::Settings,
 }
 
 impl Client {
-    /// Creates a new `Client`.
-    pub fn new(
-        max_requests_per_second: usize,
-        max_threads_cpu: usize,
-        max_threads_io: usize,
-        reqwest_client: reqwest::Client,
-        wkhtmltopdf_zoom: &str,
-    ) -> Client {
-        Client {
-            inner: reqwest_client,
-            semaphore: Arc::new(Semaphore::new(
-                max_requests_per_second,
-                max_threads_cpu,
-                max_threads_io,
-            )),
-            wkhtmltopdf_zoom: wkhtmltopdf_zoom.to_string(),
-        }
-    }
-    /// Creates a default `Client` with the following settings:
-    /// * `max_requests_per_second` = `10`
-    /// * `max_threads_cpu` = number of logical cores on your machine
-    /// * `max_threads_io` = `100`
-    /// * `reqwest_client` = default `reqwest::Client` plus `gzip` set to `false` and `timeout` set to `None`
-    /// * `wkhtmltopdf_zoom` = `"3.5"` on macOS and `"1.0"` on any other system
-    pub fn default() -> Result<Client> {
-        let inner = reqwest::ClientBuilder::new()
-            .gzip(false)
-            .timeout(None)
-            .build()?;
-        Ok(Client {
-            inner,
-            semaphore: Arc::new(Semaphore::default()),
-            wkhtmltopdf_zoom: default_wkhtmltopdf_zoom(),
-        })
-    }
-
     /// Downloads documents and writes them to disk. If the document already
     /// exists on disk `get_documents` will not redownload it
     pub fn get_documents<D>(&self, documents: &mut [Box<D>]) -> Result<()>
@@ -173,35 +130,16 @@ impl Client {
     }
 
     fn get_pdf<P: AsRef<Path>>(&self, path: P, url: &Url) -> Result<Vec<u8>> {
+        let mut arguments = self.wkhtmltopdf_settings.to_arguments();
+        arguments.push(url.to_string());
+        arguments.push(
+            path.as_ref()
+                .to_str()
+                .ok_or_else(|| format_err!("failed to parse path: {:?}", path.as_ref()))?
+                .to_string()
+        );
         let mut process = Command::new("wkhtmltopdf")
-            .args(&[
-                "--disable-external-links",
-                "--disable-internal-links",
-                "--dpi",
-                "96",
-                "--image-dpi",
-                "600",
-                "--image-quality",
-                "94",
-                "--margin-bottom",
-                "0.5in",
-                "--margin-left",
-                "0.5in",
-                "--margin-right",
-                "0.5in",
-                "--margin-top",
-                "0.5in",
-                "--orientation",
-                "Portrait",
-                "--page-size",
-                "Letter",
-                "--zoom",
-                &self.wkhtmltopdf_zoom,
-                url.as_str(),
-                path.as_ref()
-                    .to_str()
-                    .ok_or_else(|| format_err!("failed to parse path: {:?}", path.as_ref()))?,
-            ])
+            .args(&arguments)
             .stdout(Stdio::null())
             .stderr(Stdio::null())
             .stdin(Stdio::null())

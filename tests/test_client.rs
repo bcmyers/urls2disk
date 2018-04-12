@@ -5,7 +5,7 @@ use std::fs;
 use std::path::Path;
 use std::time::Instant;
 
-use urls2disk::{Client, Result, SimpleDocument, Url};
+use urls2disk::{ClientBuilder, Client, Result, SimpleDocument, Url};
 
 const NO_OF_URLS: usize = 100;
 
@@ -19,11 +19,12 @@ fn setup<P: AsRef<Path>>(data_directory: P) -> Result<Client> {
         fs::remove_dir_all(&data_directory)?;
     }
     fs::create_dir_all(&data_directory)?;
-    let client = Client::default()?;
+    let client = ClientBuilder::default().build()?;
     Ok(client)
 }
 
 #[test]
+#[ignore]
 fn test_client_html() {
     let data_directory = Path::new("./tests/test_output/test_client_html");
     let client = setup(&data_directory).unwrap();
@@ -46,6 +47,7 @@ fn test_client_html() {
 }
 
 #[test]
+#[ignore]
 fn test_client_wkhtmltopdf() {
     let data_directory = Path::new("./tests/test_output/test_client_wkhtmltopdf");
     let client = setup(&data_directory).unwrap();
