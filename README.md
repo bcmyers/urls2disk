@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/bcmyers/urls2disk.svg?branch=master)](https://travis-ci.org/bcmyers/urls2disk)
 [![Crates.io](https://img.shields.io/crates/v/urls2disk.svg)](https://crates.io/crates/urls2disk)
-[![Documentation](https://docs.rs/urls2disk/badge.svg)](https://docs.rs/urls2disk)
+[![Documentation](https://docs.rs/urls2disk/badge.svg)](https://docs.rs/urls2disk/)
 ![License](https://img.shields.io/crates/l/urls2disk.svg)
 
 [crates.io](https://crates.io/crates/urls2disk) |
