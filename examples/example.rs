@@ -77,7 +77,6 @@ fn run() -> Result<()> {
         .set_max_threads_cpu(4)
         .set_max_threads_io(50)
         .set_reqwest_client(reqwest::Client::new())
-        .set_wkhtmltopdf_setting(wkhtmltopdf::Setting::Zoom(3.5))
         .set_wkhtmltopdf_settings(vec![
             wkhtmltopdf::Setting::DisableExternalLinks(true),
             wkhtmltopdf::Setting::DisableJavascript(true),
