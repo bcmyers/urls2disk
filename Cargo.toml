@@ -9,7 +9,7 @@ documentation = "https://docs.rs/urls2disk"
 homepage = "https://github.com/bcmyers/urls2disk"
 keywords = ["http", "pdf", "scrape", "scraping"]
 license = "MIT"
-publish = true
+publish = false
 readme = "README.md"
 repository = "https://github.com/bcmyers/urls2disk"
 
