@@ -1,6 +1,7 @@
 # urls2disk
 
 [![Build Status](https://travis-ci.org/bcmyers/urls2disk.svg?branch=master)](https://travis-ci.org/bcmyers/urls2disk)
+[![Documentation](https://docs.rs/urls2disk/badge.svg)](https://docs.rs/urls2disk)
 
 [crates.io](https://crates.io/crates/urls2disk) |
 [docs.rs](https://docs.rs/urls2disk) |

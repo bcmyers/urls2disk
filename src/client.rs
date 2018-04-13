@@ -89,7 +89,8 @@ impl Client {
                 } else {
                     self.semaphore.increment_threads_io();
                     let child = scope.spawn(move || {
-                        let result = client.get_url(&url).and_then(|bytes| {
+                        let result = client.get_url(&url);
+                        let result = result.and_then(|bytes| {
                             let file = File::create(&path)?;
                             let mut writer = BufWriter::new(file);
                             writer.write_all(&bytes)?;
