@@ -68,7 +68,10 @@ impl ClientBuilder {
     }
 
     /// Set wkhtmltopdf settings based on provided `Vec` of `wkhtmltopdf::Setting`.
-    pub fn set_wkhtmltopdf_settings(mut self, settings: Vec<wkhtmltopdf::Setting>) -> ClientBuilder {
+    pub fn set_wkhtmltopdf_settings(
+        mut self,
+        settings: Vec<wkhtmltopdf::Setting>,
+    ) -> ClientBuilder {
         for setting in settings {
             self.wkhtmltopdf_settings.set(setting);
         }
@@ -79,10 +82,12 @@ impl ClientBuilder {
     pub fn build(self) -> Result<Client> {
         let reqwest_client = match self.reqwest_client {
             Some(reqwest_client) => reqwest_client,
-            None => reqwest::ClientBuilder::new()
-                .gzip(false)
-                .timeout(None)
-                .build()?,
+            None => {
+                reqwest::ClientBuilder::new()
+                    .gzip(false)
+                    .timeout(None)
+                    .build()?
+            },
         };
         let semaphore = Semaphore::new(
             self.max_requests_per_second,

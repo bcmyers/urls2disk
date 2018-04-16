@@ -5,7 +5,7 @@ use std::fs;
 use std::path::Path;
 use std::time::Instant;
 
-use urls2disk::{ClientBuilder, Client, Result, SimpleDocument, Url};
+use urls2disk::{Client, ClientBuilder, Result, SimpleDocument, Url};
 
 const NO_OF_URLS: usize = 100;
 

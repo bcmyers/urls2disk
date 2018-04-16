@@ -156,8 +156,8 @@ mod document;
 mod error;
 mod semaphore;
 mod simple_document;
-pub mod wkhtmltopdf;
 mod utils;
+pub mod wkhtmltopdf;
 
 pub use client::Client;
 pub use client_builder::ClientBuilder;

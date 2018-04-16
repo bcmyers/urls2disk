@@ -42,12 +42,14 @@ impl Client {
             let (s2, r2) = channel();
 
             let semaphore = (self.semaphore).clone();
-            scope.spawn(move || loop {
-                thread::sleep(Duration::from_millis(1000));
-                semaphore.reset_requests();
-                match r1.try_recv() {
-                    Ok(_) | Err(TryRecvError::Disconnected) => break,
-                    Err(TryRecvError::Empty) => (),
+            scope.spawn(move || {
+                loop {
+                    thread::sleep(Duration::from_millis(1000));
+                    semaphore.reset_requests();
+                    match r1.try_recv() {
+                        Ok(_) | Err(TryRecvError::Disconnected) => break,
+                        Err(TryRecvError::Empty) => (),
+                    }
                 }
             });
 
@@ -137,7 +139,7 @@ impl Client {
             path.as_ref()
                 .to_str()
                 .ok_or_else(|| format_err!("failed to parse path: {:?}", path.as_ref()))?
-                .to_string()
+                .to_string(),
         );
         let mut process = Command::new("wkhtmltopdf")
             .args(&arguments)

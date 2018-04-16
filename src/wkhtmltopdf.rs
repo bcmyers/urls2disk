@@ -78,11 +78,17 @@ impl Settings {
             arguments.push("--grayscale".to_string());
         }
         arguments.extend_from_slice(&["--image-dpi".to_string(), self.image_dpi.to_string()]);
-        arguments.extend_from_slice(&["--image-quality".to_string(), self.image_quality.to_string()]);
+        arguments.extend_from_slice(&[
+            "--image-quality".to_string(),
+            self.image_quality.to_string(),
+        ]);
         if self.low_quality {
             arguments.push("--low-quality".to_string());
         }
-        arguments.extend_from_slice(&["--javascript-delay".to_string(), duration_to_millis(self.javascript_delay).to_string()]);
+        arguments.extend_from_slice(&[
+            "--javascript-delay".to_string(),
+            duration_to_millis(self.javascript_delay).to_string(),
+        ]);
         arguments.extend_from_slice(&["--margin-bottom".to_string(), self.margin_bottom.clone()]);
         arguments.extend_from_slice(&["--margin-left".to_string(), self.margin_left.clone()]);
         arguments.extend_from_slice(&["--margin-right".to_string(), self.margin_right.clone()]);
@@ -96,7 +102,8 @@ impl Settings {
         if self.no_pdf_compression {
             arguments.push("--no-pdf-compression".to_string());
         }
-        arguments.extend_from_slice(&["--orientation".to_string(), self.orientation.clone().into()]);
+        arguments
+            .extend_from_slice(&["--orientation".to_string(), self.orientation.clone().into()]);
         arguments.extend_from_slice(&["--page-size".to_string(), self.page_size.clone().into()]);
         arguments.extend_from_slice(&["--zoom".to_string(), format!("{:.2}", self.zoom)]);
         arguments
@@ -326,10 +333,10 @@ mod tests {
         }
         let output = s.trim();
         let desired = "--disable-external-links --disable-javascript --enable-forms \
-            --dpi 100 --grayscale --image-dpi 101 --image-quality 102 --low-quality \
-            --javascript-delay 2000 --margin-bottom 0.1in --margin-left 0.2in \
-            --margin-right 0.3in --margin-top 0.4in --no-background --no-images \
-            --no-pdf-compression --orientation Landscape --page-size A4 --zoom 2.00";
+                       --dpi 100 --grayscale --image-dpi 101 --image-quality 102 --low-quality \
+                       --javascript-delay 2000 --margin-bottom 0.1in --margin-left 0.2in \
+                       --margin-right 0.3in --margin-top 0.4in --no-background --no-images \
+                       --no-pdf-compression --orientation Landscape --page-size A4 --zoom 2.00";
         assert_eq!(desired, output);
     }
 }

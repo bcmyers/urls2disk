@@ -11,6 +11,7 @@ pub(crate) fn duration_to_millis(duration: Duration) -> u64 {
 mod tests {
     use super::*;
 
+    #[test]
     fn test_duration_to_millis() {
         let expected = 2000;
         let duration = Duration::from_millis(expected);
